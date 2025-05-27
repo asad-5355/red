@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطعم ريدان المندي | Redan Mandi Restaurant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>مطعم ريدان المندي - طلب الكتروني</title>
+    <link rel="stylesheet" href="https://j.top4top.io/p_3434sewqv0.jpg>
     <style>
         :root {
             --primary: #c52d2f;
@@ -51,27 +51,6 @@
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
-        .lang-switcher {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .lang-switcher button {
-            background: none;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-        
-        .lang-switcher button.active {
-            background-color: var(--primary);
         }
         
         nav {
@@ -168,12 +147,6 @@
             font-weight: bold;
             margin-bottom: 0.5rem;
             color: var(--dark);
-        }
-        
-        .item-name-en {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.3rem;
         }
         
         .item-price {
@@ -427,51 +400,6 @@
             100% { opacity: 0; transform: translateX(50%) translateY(20px); }
         }
         
-        /* English styles */
-        body[dir="ltr"] {
-            direction: ltr;
-            text-align: left;
-        }
-        
-        body[dir="ltr"] .section-title::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        body[dir="ltr"] .cart-icon {
-            left: auto;
-            right: 20px;
-        }
-        
-        body[dir="ltr"] .cart-count {
-            left: auto;
-            right: -5px;
-        }
-        
-        body[dir="ltr"] .cart-sidebar {
-            left: auto;
-            right: -400px;
-        }
-        
-        body[dir="ltr"] .cart-sidebar.open {
-            right: 0;
-            left: auto;
-        }
-        
-        body[dir="ltr"] .remove-item {
-            margin-right: 0;
-            margin-left: 1rem;
-        }
-        
-        body[dir="ltr"] .cart-total {
-            text-align: right;
-        }
-        
-        body[dir="ltr"] .lang-switcher {
-            left: auto;
-            right: 20px;
-        }
-        
         @media (max-width: 768px) {
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -480,11 +408,6 @@
             .cart-sidebar {
                 width: 100%;
                 left: -100%;
-            }
-            
-            body[dir="ltr"] .cart-sidebar {
-                right: -100%;
-                left: auto;
             }
             
             nav ul {
@@ -497,23 +420,20 @@
         }
     </style>
 </head>
-<body dir="rtl">
+<body>
     <header>
-        <div class="lang-switcher">
-            <button onclick="switchLanguage('ar')" class="active">العربية</button>
-            <button onclick="switchLanguage('en')">English</button>
-        </div>
-        <div class="logo" data-ar="مطعم ريدان المندي" data-en="Redan Mandi Restaurant"></div>
-        <div class="tagline" data-ar="أصالة الطعم اليمني إلى باب منزلك" data-en="Authentic Yemeni Cuisine Delivered to Your Doorstep"></div>
+        <div class="logo">مطعم ريدان المندي</div>
+        <div class="tagline">أصالة الطعم اليمني إلى باب منزلك</div>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
-            <li><a href="#mutton" data-ar="لحم ضأن" data-en="Mutton">لحم ضأن</a></li>
-            <li><a href="#chicken" data-ar="دجاج" data-en="Chicken">دجاج</a></li>
-            <li><a href="#salads" data-ar="سلطات" data-en="Salads">سلطات</a></li>
-            <li><a href="#desserts" data-ar="حلويات" data-en="Desserts">حلويات</a></li>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#chicken">قائمة الدجاج</a></li>
+            <li><a href="#lamb">قائمة اللحم</a></li>
+            <li><a href="#salads">السلطات</a></li>
+            <li><a href="#beverages">المشروبات</a></li>
+            <li><a href="#desserts">الحلويات</a></li>
         </ul>
     </nav>
     
@@ -524,125 +444,58 @@
     
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h2 data-ar="سلة المشتريات" data-en="Your Cart">سلة المشتريات</h2>
+            <h2>سلة المشتريات</h2>
             <button class="close-cart" onclick="toggleCart()">&times;</button>
         </div>
         <div class="cart-items" id="cartItems">
-            <div class="empty-cart" data-ar="السلة فارغة" data-en="Cart is empty">السلة فارغة</div>
+            <div class="empty-cart">السلة فارغة</div>
         </div>
         <div class="cart-total">
-            <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span> <span id="cartTotal">0</span> <span data-ar="درهم" data-en="AED">درهم</span>
+            الإجمالي: <span id="cartTotal">0</span> درهم
         </div>
         
         <div class="checkout-form">
             <div class="form-group">
-                <label for="customer-name" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
-                <input type="text" id="customer-name" placeholder="ادخل اسمك" data-ar-placeholder="ادخل اسمك" data-en-placeholder="Enter your name">
+                <label for="customer-name">الاسم الكامل</label>
+                <input type="text" id="customer-name" placeholder="ادخل اسمك">
             </div>
             <div class="form-group">
-                <label for="customer-phone" data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
-                <input type="tel" id="customer-phone" placeholder="ادخل رقم الهاتف" data-ar-placeholder="ادخل رقم الهاتف" data-en-placeholder="Enter phone number">
+                <label for="customer-phone">رقم الهاتف</label>
+                <input type="tel" id="customer-phone" placeholder="ادخل رقم الهاتف">
             </div>
             <div class="form-group">
-                <label for="customer-address" data-ar="عنوان التوصيل" data-en="Delivery Address">عنوان التوصيل</label>
-                <textarea id="customer-address" rows="3" placeholder="ادخل عنوان التفصيلي" data-ar-placeholder="ادخل عنوان التفصيلي" data-en-placeholder="Enter full address"></textarea>
+                <label for="customer-address">عنوان التوصيل</label>
+                <textarea id="customer-address" rows="3" placeholder="ادخل عنوان التفصيلي"></textarea>
             </div>
             <div class="form-group">
-                <label for="customer-notes" data-ar="ملاحظات إضافية" data-en="Additional Notes">ملاحظات إضافية</label>
-                <textarea id="customer-notes" rows="2" placeholder="ملاحظات حول الطلب" data-ar-placeholder="ملاحظات حول الطلب" data-en-placeholder="Order notes"></textarea>
+                <label for="customer-notes">ملاحظات إضافية</label>
+                <textarea id="customer-notes" rows="2" placeholder="ملاحظات حول الطلب"></textarea>
             </div>
         </div>
         
         <button class="checkout-btn" onclick="checkout()">
-            <i class="fab fa-whatsapp"></i> <span data-ar="إرسال الطلب عبر واتساب" data-en="Send Order via WhatsApp">إرسال الطلب عبر واتساب</span>
+            <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
         </button>
     </div>
     
     <div class="container">
         <section id="home">
             <div class="menu-category">
-                <h2 class="section-title" data-ar="مرحباً بكم في مطعم ريدان المندي" data-en="Welcome to Redan Mandi Restaurant">مرحباً بكم في مطعم ريدان المندي</h2>
-                <p style="text-align: center; margin-bottom: 2rem;" data-ar="نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم" data-en="We serve the most delicious and authentic Yemeni cuisine with irresistible flavors">نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم</p>
-            </div>
-        </section>
-        
-        <section id="mutton" class="menu-category">
-            <h2 class="section-title" data-ar="لحم ضأن" data-en="Mutton Meals">لحم ضأن</h2>
-            <div class="menu-items">
-                <!-- Mutton Items from PDF -->
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">مندي لحم</h3>
-                        <div class="item-name-en">Mutton Mandi</div>
-                        <div class="item-price">55 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مندي لحم | Mutton Mandi', 55)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">مضبي لحم</h3>
-                        <div class="item-name-en">Mutton Madbi</div>
-                        <div class="item-price">60 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مضبي لحم | Mutton Madbi', 60)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">مدفون لحم</h3>
-                        <div class="item-name-en">Mutton Madfoon</div>
-                        <div class="item-price">60 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مدفون لحم | Mutton Madfoon', 60)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">كبسة لحم</h3>
-                        <div class="item-name-en">Mutton Kabsa</div>
-                        <div class="item-price">60 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('كبسة لحم | Mutton Kabsa', 60)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">بخاري لحم</h3>
-                        <div class="item-name-en">Mutton Bukhari</div>
-                        <div class="item-price">50 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('بخاري لحم | Mutton Bukhari', 50)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">حنيذ لحم كتف</h3>
-                        <div class="item-name-en">Mutton Haneeth</div>
-                        <div class="item-price">75 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('حنيذ لحم كتف | Mutton Haneeth', 75)">أضف إلى السلة</button>
-                    </div>
-                </div>
+                <h2 class="section-title">مرحباً بكم في مطعم ريدان المندي</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم</p>
             </div>
         </section>
         
         <section id="chicken" class="menu-category">
-            <h2 class="section-title" data-ar="قائمة الدجاج" data-en="Chicken Meals">قائمة الدجاج</h2>
+            <h2 class="section-title">قائمة الدجاج</h2>
             <div class="menu-items">
-                <!-- Chicken Items from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
                         <h3 class="item-name">مندي دجاج</h3>
-                        <div class="item-name-en">Chicken Mandi</div>
-                        <div class="item-price">33 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مندي دجاج | Chicken Mandi', 33)">أضف إلى السلة</button>
+                        <div class="item-price">30 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي دجاج', 30)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
@@ -650,9 +503,9 @@
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
                         <h3 class="item-name">مضبي دجاج</h3>
-                        <div class="item-name-en">Chicken Madbi</div>
                         <div class="item-price">33 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مضبي دجاج | Chicken Madbi', 33)">أضف إلى السلة</button>
+                        <p class="item-desc">دجاج مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي دجاج', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
@@ -660,19 +513,19 @@
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
                         <h3 class="item-name">مدفون دجاج</h3>
-                        <div class="item-name-en">Chicken Madfoon</div>
                         <div class="item-price">33 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مدفون دجاج | Chicken Madfoon', 33)">أضف إلى السلة</button>
+                        <p class="item-desc">دجاج مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون دجاج', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">حنيذ دجاج</h3>
-                        <div class="item-name-en">Chicken Haneeth</div>
+                        <h3 class="item-name">كبسة دجاج</h3>
                         <div class="item-price">35 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('حنيذ دجاج | Chicken Haneeth', 35)">أضف إلى السلة</button>
+                        <p class="item-desc">دجاج مع أرز بسمتي ومكسرات</p>
+                        <button class="add-to-cart" onclick="addToCart('كبسة دجاج', 35)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
@@ -680,91 +533,292 @@
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
                         <h3 class="item-name">مدفون ريدان دجاج</h3>
-                        <div class="item-name-en">Redan Chicken Madfoon</div>
                         <div class="item-price">35 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان دجاج | Redan Chicken Madfoon', 35)">أضف إلى السلة</button>
+                        <p class="item-desc">طبق الدجاج المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان دجاج', 35)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ دجاج', 35)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="lamb" class="menu-category">
+            <h2 class="section-title">قائمة اللحم</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مندي لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مضبي لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">محمود لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ حسب وصفة الشيف السرية</p>
+                        <button class="add-to-cart" onclick="addToCart('محمود لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون ريدان لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">طبق اللحم المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ لحم كتف</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">كتف لحم مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ لحم كتف', 75)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ جنب</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">قطع لحم ضلوع مع تتبيلة خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ جنب', 75)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">عوكه لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة تقليدية بنكهات غنية</p>
+                        <button class="add-to-cart" onclick="addToCart('عوكه لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مقلقل لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">قطع لحم مطبوخة مع بهارات خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('مقلقل لحم', 50)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">محمر لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مع أرز محمر بنكهات مميزة</p>
+                        <button class="add-to-cart" onclick="addToCart('محمر لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">بخاري لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">لحم مع أرز بسمتي وبهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('بخاري لحم', 50)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="salads" class="menu-category">
-            <h2 class="section-title" data-ar="السلطات" data-en="Salads">السلطات</h2>
+            <h2 class="section-title">السلطات</h2>
             <div class="menu-items">
-                <!-- Salads from PDF -->
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">سلطة عربية</h3>
-                        <div class="item-name-en">Arabic Salad</div>
-                        <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('سلطة عربية | Arabic Salad', 15)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">سلطة جرجير</h3>
-                        <div class="item-name-en">Arugula Salad</div>
-                        <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('سلطة جرجير | Arugula Salad', 15)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
                         <h3 class="item-name">فتوش</h3>
-                        <div class="item-name-en">Fattoush</div>
                         <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('فتوش | Fattoush', 15)">أضف إلى السلة</button>
+                        <p class="item-desc">سلطة خضار مع خبز مقرمش وصلصة رمان</p>
+                        <button class="add-to-cart" onclick="addToCart('فتوش', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">سلطة ريدان</h3>
-                        <div class="item-name-en">Redan Salad</div>
+                        <h3 class="item-name">تبوله</h3>
                         <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('سلطة ريدان | Redan Salad', 15)">أضف إلى السلة</button>
+                        <p class="item-desc">سلطة بقدونس مع برغل وطماطم وصلصة ليمون</p>
+                        <button class="add-to-cart" onclick="addToCart('تبوله', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">روب خيار</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">لبن مع خيار ونعناع</p>
+                        <button class="add-to-cart" onclick="addToCart('روب خيار', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة جرجير</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">جرجير طازج مع كرزية وصوص بلسميك</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة جرجير', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة عربيه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">خضروات مقطعة مع ليمون وزيت زيتون</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة عربيه', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة ريدان</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطتنا المميزة مع صوص خاص</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة ريدان', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="beverages" class="menu-category">
+            <h2 class="section-title">المشروبات</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كينزا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب شعير منعش</p>
+                        <button class="add-to-cart" onclick="addToCart('كينزا', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80</div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">بيبسي</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب غازي كلاسيكي</p>
+                        <button class="add-to-cart" onclick="addToCart('بيبسي', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">ديو</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب حمضيات غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ديو', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">ميرندا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب برتقال غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ميرندا', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سفن أب</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب ليمون-لايم غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('سفن أب', 4)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="desserts" class="menu-category">
-            <h2 class="section-title" data-ar="الحلويات" data-en="Desserts">الحلويات</h2>
+            <h2 class="section-title">الحلويات</h2>
             <div class="menu-items">
-                <!-- Desserts from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">كنافة قشطة</h3>
-                        <div class="item-name-en">Kunafa with Cream</div>
+                        <h3 class="item-name">كنافه قشطه</h3>
                         <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('كنافة قشطة | Kunafa with Cream', 15)">أضف إلى السلة</button>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالقشطة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه قشطه', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">كنافة جبنة</h3>
-                        <div class="item-name-en">Kunafa with Cheese</div>
+                        <h3 class="item-name">كنافه جبنه</h3>
                         <div class="item-price">15 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('كنافة جبنة | Kunafa with Cheese', 15)">أضف إلى السلة</button>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالجبنة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه جبنه', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">كنافة شوكولاته</h3>
-                        <div class="item-name-en">Chocolate Kunafa</div>
+                        <h3 class="item-name">كنافه شوكولاته</h3>
                         <div class="item-price">16 درهم</div>
-                        <button class="add-to-cart" onclick="addToCart('كنافة شوكولاته | Chocolate Kunafa', 16)">أضف إلى السلة</button>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالشوكولاته</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه شوكولاته', 16)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
@@ -773,15 +827,178 @@
     
     <footer>
         <div class="footer-content">
-            <h3 data-ar="مطعم ريدان المندي" data-en="Redan Mandi Restaurant">مطعم ريدان المندي</h3>
+            <h3>مطعم ريدان المندي</h3>
             <div class="contact-info">
                 <p><i class="fas fa-phone"></i> 00971588155123</p>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-ar="[عنوان المطعم هنا]" data-en="[Restaurant Address]">[عنوان المطعم هنا]</span></p>
+                <p><i class="fas fa-map-marker-alt"></i> [عنوان المطعم هنا]</p>
             </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/971588155123"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p class="delivery-hours" data-ar="أوقات التوصيل: 11 صباحاً - 11 مساءً" data-en="Delivery Hours: 11 AM - 11 PM">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
-            <p data-ar="&copy; 2023 مطعم ريدان
+            <p class="delivery-hours">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
+            <p>&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // متغيرات السلة
+        let cart = [];
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        // عرض/إخفاء السلة
+        function toggleCart() {
+            cartSidebar.classList.toggle('open');
+        }
+        
+        // إضافة عنصر للسلة
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${name} تمت إضافته للسلة`);
+        }
+        
+        // تحديث عرض السلة
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">السلة فارغة</div>';
+            } else {
+                cart.forEach(item => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price * item.quantity} درهم</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                            <span class="remove-item" onclick="removeItem('${item.name}')"><i class="fas fa-times"></i></span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+            }
+            
+            // تحديث العدد الإجمالي
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // تحديث المبلغ الإجمالي
+            const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartTotal.textContent = totalAmount;
+        }
+        
+        // تغيير الكمية
+        function changeQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.name !== name);
+                    showNotification(`${name} تم إزالته من السلة`);
+                }
+                
+                updateCart();
+            }
+        }
+        
+        // إزالة عنصر من السلة
+        function removeItem(name) {
+            cart = cart.filter(item => item.name !== name);
+            showNotification(`${name} تم إزالته من السلة`);
+            updateCart();
+        }
+        
+        // إرسال الطلب عبر واتساب
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('السلة فارغة! الرجاء إضافة عناصر أولاً');
+                return;
+            }
+            
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            const notes = document.getElementById('customer-notes').value;
+            
+            if (!name || !phone || !address) {
+                showNotification('الرجاء إدخال جميع المعلومات المطلوبة');
+                return;
+            }
+            
+            let message = `مرحباً، أريد طلب التالي من مطعم ريدان المندي:\n\n`;
+            message += `الاسم: ${name}\n`;
+            message += `رقم الهاتف: ${phone}\n`;
+            message += `العنوان: ${address}\n`;
+            message += `ملاحظات: ${notes || 'لا يوجد'}\n\n`;
+            message += `تفاصيل الطلب:\n`;
+            
+            cart.forEach(item => {
+                message += `${item.name} × ${item.quantity} - ${item.price * item.quantity} درهم\n`;
+            });
+            
+            message += `\nالمجموع: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0)} درهم`;
+            
+            const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // عرض إشعار
+        function showNotification(text) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = text;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // إغلاق السلة عند النقر خارجها
+        document.addEventListener('click', (event) => {
+            if (!cartSidebar.contains(event.target) && event.target.className !== 'cart-icon' && 
+                !event.target.closest('.cart-icon')) {
+                cartSidebar.classList.remove('open');
+            }
+        });
+        
+        // التمرير السلس للقوائم
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
