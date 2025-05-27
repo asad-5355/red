@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مطعم ريدان المندي | Redan Mandi Restaurant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #c52d2f;
@@ -13,19 +14,19 @@
             --light: #f8f8f8;
             --success: #4CAF50;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Tajawal', Arial, sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
             color: var(--dark);
         }
-        
+
         header {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -39,20 +40,31 @@
             flex-direction: column;
             justify-content: center;
         }
-        
-        .logo {
-            font-size: 3rem;
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-img {
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .tagline {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
-        
+
         .lang-switcher {
             position: absolute;
             top: 20px;
@@ -61,7 +73,7 @@
             border-radius: 4px;
             overflow: hidden;
         }
-        
+
         .lang-switcher button {
             background: none;
             border: none;
@@ -69,11 +81,11 @@
             padding: 5px 10px;
             cursor: pointer;
         }
-        
+
         .lang-switcher button.active {
             background-color: var(--primary);
         }
-        
+
         nav {
             background-color: var(--primary);
             padding: 1rem;
@@ -82,17 +94,17 @@
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
         }
-        
+
         nav li {
             margin: 0 1rem;
         }
-        
+
         nav a {
             color: white;
             text-decoration: none;
@@ -101,17 +113,17 @@
             border-radius: 4px;
             transition: background-color 0.3s;
         }
-        
+
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 2rem;
@@ -119,7 +131,7 @@
             position: relative;
             padding-bottom: 0.5rem;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -130,17 +142,17 @@
             height: 3px;
             background-color: var(--secondary);
         }
-        
+
         .menu-category {
             margin-bottom: 3rem;
         }
-        
+
         .menu-items {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
-        
+
         .menu-item {
             background-color: white;
             border-radius: 8px;
@@ -148,47 +160,47 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
-        
+
         .menu-item:hover {
             transform: translateY(-5px);
         }
-        
+
         .item-image {
             height: 200px;
             background-size: cover;
             background-position: center;
         }
-        
+
         .item-details {
             padding: 1.5rem;
         }
-        
+
         .item-name {
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
             color: var(--dark);
         }
-        
+
         .item-name-en {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 0.3rem;
         }
-        
+
         .item-price {
             color: var(--primary);
             font-weight: bold;
             font-size: 1.1rem;
             margin-bottom: 1rem;
         }
-        
+
         .item-desc {
             color: #666;
             margin-bottom: 1rem;
             font-size: 0.9rem;
         }
-        
+
         .add-to-cart {
             background-color: var(--primary);
             color: white;
@@ -200,15 +212,15 @@
             width: 100%;
             font-weight: bold;
         }
-        
+
         .add-to-cart:hover {
             background-color: #a82527;
         }
-        
+
         .cart-icon {
             position: fixed;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background-color: var(--primary);
             color: white;
             width: 50px;
@@ -221,11 +233,11 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 101;
         }
-        
+
         .cart-count {
             position: absolute;
             top: -5px;
-            left: -5px;
+            right: -5px;
             background-color: var(--secondary);
             color: var(--dark);
             width: 20px;
@@ -237,25 +249,25 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
+
         .cart-sidebar {
             position: fixed;
             top: 0;
-            left: -400px;
+            right: -400px;
             width: 400px;
             height: 100%;
             background-color: white;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s;
+            transition: right 0.3s;
             z-index: 102;
             padding: 1.5rem;
             overflow-y: auto;
         }
-        
+
         .cart-sidebar.open {
-            left: 0;
+            right: 0;
         }
-        
+
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -264,7 +276,7 @@
             padding-bottom: 1rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .close-cart {
             background: none;
             border: none;
@@ -272,11 +284,11 @@
             cursor: pointer;
             color: #666;
         }
-        
+
         .cart-items {
             margin-bottom: 1.5rem;
         }
-        
+
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -285,25 +297,25 @@
             padding-bottom: 1rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .cart-item-info {
             flex: 1;
         }
-        
+
         .cart-item-name {
             font-weight: bold;
         }
-        
+
         .cart-item-price {
             color: var(--primary);
             font-weight: bold;
         }
-        
+
         .cart-item-quantity {
             display: flex;
             align-items: center;
         }
-        
+
         .quantity-btn {
             background-color: #eee;
             border: none;
@@ -312,45 +324,45 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
         .quantity {
             margin: 0 0.5rem;
         }
-        
+
         .remove-item {
             color: #ff4d4d;
-            margin-right: 1rem;
+            margin-left: 1rem;
             cursor: pointer;
         }
-        
+
         .cart-total {
             font-weight: bold;
             font-size: 1.2rem;
-            text-align: left;
+            text-align: right;
             margin-bottom: 1.5rem;
         }
-        
+
         .checkout-form {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group {
             margin-bottom: 1rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
-        
+
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 0.5rem;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        
+
         .checkout-btn {
             background-color: var(--success);
             color: white;
@@ -367,17 +379,17 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .checkout-btn:hover {
             background-color: #3d8b40;
         }
-        
+
         .empty-cart {
             text-align: center;
             padding: 2rem;
             color: #666;
         }
-        
+
         footer {
             background-color: var(--dark);
             color: white;
@@ -385,27 +397,27 @@
             padding: 2rem 1rem;
             margin-top: 3rem;
         }
-        
+
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .social-icons {
             margin: 1rem 0;
         }
-        
+
         .social-icons a {
             color: white;
             margin: 0 0.5rem;
             font-size: 1.5rem;
         }
-        
+
         .contact-info {
             margin: 1rem 0;
         }
-        
+
         .notification {
             position: fixed;
             bottom: 20px;
@@ -419,59 +431,59 @@
             z-index: 1000;
             animation: fadeInOut 2.5s ease-in-out;
         }
-        
+
         @keyframes fadeInOut {
             0% { opacity: 0; transform: translateX(50%) translateY(20px); }
             10% { opacity: 1; transform: translateX(50%) translateY(0); }
             90% { opacity: 1; transform: translateX(50%) translateY(0); }
             100% { opacity: 0; transform: translateX(50%) translateY(20px); }
         }
-        
+
         /* English styles */
         body[dir="ltr"] {
             direction: ltr;
             text-align: left;
         }
-        
+
         body[dir="ltr"] .section-title::after {
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
         body[dir="ltr"] .cart-icon {
-            left: auto;
-            right: 20px;
+            right: auto;
+            left: 20px;
         }
-        
+
         body[dir="ltr"] .cart-count {
-            left: auto;
-            right: -5px;
+            right: auto;
+            left: -5px;
         }
-        
+
         body[dir="ltr"] .cart-sidebar {
-            left: auto;
-            right: -400px;
+            right: auto;
+            left: -400px;
         }
-        
+
         body[dir="ltr"] .cart-sidebar.open {
-            right: 0;
-            left: auto;
+            left: 0;
+            right: auto;
         }
-        
+
         body[dir="ltr"] .remove-item {
-            margin-right: 0;
-            margin-left: 1rem;
+            margin-left: 0;
+            margin-right: 1rem;
         }
-        
+
         body[dir="ltr"] .cart-total {
             text-align: right;
         }
-        
+
         body[dir="ltr"] .lang-switcher {
             left: auto;
             right: 20px;
         }
-        
+
         @media (max-width: 768px) {
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -479,12 +491,12 @@
             
             .cart-sidebar {
                 width: 100%;
-                left: -100%;
+                right: -100%;
             }
             
             body[dir="ltr"] .cart-sidebar {
-                right: -100%;
-                left: auto;
+                left: -100%;
+                right: auto;
             }
             
             nav ul {
@@ -503,10 +515,13 @@
             <button onclick="switchLanguage('ar')" class="active">العربية</button>
             <button onclick="switchLanguage('en')">English</button>
         </div>
-        <div class="logo" data-ar="مطعم ريدان المندي" data-en="Redan Mandi Restaurant"></div>
-        <div class="tagline" data-ar="أصالة الطعم اليمني إلى باب منزلك" data-en="Authentic Yemeni Cuisine Delivered to Your Doorstep"></div>
+        <div class="logo-container">
+            <img src="https://i.imgur.com/placeholder.png" alt="Redan Mandi Logo" class="logo-img" id="logoImage">
+            <div class="logo-text" data-ar="مطعم ريدان المندي" data-en="Redan Mandi Restaurant">مطعم ريدان المندي</div>
+        </div>
+        <div class="tagline" data-ar="أصالة الطعم اليمني إلى باب منزلك" data-en="Authentic Yemeni Cuisine Delivered to Your Doorstep">أصالة الطعم اليمني إلى باب منزلك</div>
     </header>
-    
+
     <nav>
         <ul>
             <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
@@ -516,12 +531,12 @@
             <li><a href="#desserts" data-ar="حلويات" data-en="Desserts">حلويات</a></li>
         </ul>
     </nav>
-    
+
     <div class="cart-icon" onclick="toggleCart()">
         <i class="fas fa-shopping-cart"></i>
         <div class="cart-count" id="cartCount">0</div>
     </div>
-    
+
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h2 data-ar="سلة المشتريات" data-en="Your Cart">سلة المشتريات</h2>
@@ -531,9 +546,10 @@
             <div class="empty-cart" data-ar="السلة فارغة" data-en="Cart is empty">السلة فارغة</div>
         </div>
         <div class="cart-total">
-            <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span> <span id="cartTotal">0</span> <span data-ar="درهم" data-en="AED">درهم</span>
+            <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span>
+            <span id="cartTotal">0</span>
+            <span data-ar="درهم" data-en="AED">درهم</span>
         </div>
-        
         <div class="checkout-form">
             <div class="form-group">
                 <label for="customer-name" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
@@ -552,12 +568,12 @@
                 <textarea id="customer-notes" rows="2" placeholder="ملاحظات حول الطلب" data-ar-placeholder="ملاحظات حول الطلب" data-en-placeholder="Order notes"></textarea>
             </div>
         </div>
-        
         <button class="checkout-btn" onclick="checkout()">
-            <i class="fab fa-whatsapp"></i> <span data-ar="إرسال الطلب عبر واتساب" data-en="Send Order via WhatsApp">إرسال الطلب عبر واتساب</span>
+            <i class="fab fa-whatsapp"></i>
+            <span data-ar="إرسال الطلب عبر واتساب" data-en="Send Order via WhatsApp">إرسال الطلب عبر واتساب</span>
         </button>
     </div>
-    
+
     <div class="container">
         <section id="home">
             <div class="menu-category">
@@ -565,11 +581,10 @@
                 <p style="text-align: center; margin-bottom: 2rem;" data-ar="نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم" data-en="We serve the most delicious and authentic Yemeni cuisine with irresistible flavors">نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم</p>
             </div>
         </section>
-        
+
         <section id="mutton" class="menu-category">
             <h2 class="section-title" data-ar="لحم ضأن" data-en="Mutton Meals">لحم ضأن</h2>
             <div class="menu-items">
-                <!-- Mutton Items from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -579,7 +594,6 @@
                         <button class="add-to-cart" onclick="addToCart('مندي لحم | Mutton Mandi', 55)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -589,7 +603,6 @@
                         <button class="add-to-cart" onclick="addToCart('مضبي لحم | Mutton Madbi', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -599,7 +612,6 @@
                         <button class="add-to-cart" onclick="addToCart('مدفون لحم | Mutton Madfoon', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -609,7 +621,6 @@
                         <button class="add-to-cart" onclick="addToCart('كبسة لحم | Mutton Kabsa', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -619,7 +630,6 @@
                         <button class="add-to-cart" onclick="addToCart('بخاري لحم | Mutton Bukhari', 50)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -631,11 +641,10 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="chicken" class="menu-category">
             <h2 class="section-title" data-ar="قائمة الدجاج" data-en="Chicken Meals">قائمة الدجاج</h2>
             <div class="menu-items">
-                <!-- Chicken Items from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -645,7 +654,6 @@
                         <button class="add-to-cart" onclick="addToCart('مندي دجاج | Chicken Mandi', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -655,7 +663,6 @@
                         <button class="add-to-cart" onclick="addToCart('مضبي دجاج | Chicken Madbi', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -665,7 +672,6 @@
                         <button class="add-to-cart" onclick="addToCart('مدفون دجاج | Chicken Madfoon', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -675,7 +681,6 @@
                         <button class="add-to-cart" onclick="addToCart('حنيذ دجاج | Chicken Haneeth', 35)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -687,11 +692,10 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="salads" class="menu-category">
             <h2 class="section-title" data-ar="السلطات" data-en="Salads">السلطات</h2>
             <div class="menu-items">
-                <!-- Salads from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -701,7 +705,6 @@
                         <button class="add-to-cart" onclick="addToCart('سلطة عربية | Arabic Salad', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -711,7 +714,6 @@
                         <button class="add-to-cart" onclick="addToCart('سلطة جرجير | Arugula Salad', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -721,7 +723,6 @@
                         <button class="add-to-cart" onclick="addToCart('فتوش | Fattoush', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -733,11 +734,10 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="desserts" class="menu-category">
             <h2 class="section-title" data-ar="الحلويات" data-en="Desserts">الحلويات</h2>
             <div class="menu-items">
-                <!-- Desserts from PDF -->
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -747,7 +747,6 @@
                         <button class="add-to-cart" onclick="addToCart('كنافة قشطة | Kunafa with Cream', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -757,7 +756,6 @@
                         <button class="add-to-cart" onclick="addToCart('كنافة جبنة | Kunafa with Cheese', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
-                
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
@@ -770,7 +768,7 @@
             </div>
         </section>
     </div>
-    
+
     <footer>
         <div class="footer-content">
             <h3 data-ar="مطعم ريدان المندي" data-en="Redan Mandi Restaurant">مطعم ريدان المندي</h3>
@@ -784,4 +782,195 @@
                 <a href="https://wa.me/971588155123"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="delivery-hours" data-ar="أوقات التوصيل: 11 صباحاً - 11 مساءً" data-en="Delivery Hours: 11 AM - 11 PM">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
-            <p data-ar="&copy; 2023 مطعم ريدان
+            <p data-ar="&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة." data-en="&copy; 2023 Redan Mandi Restaurant. All Rights Reserved.">&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <div class="notification" id="notification" style="display: none;"></div>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+        }
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification('تمت إضافة العنصر إلى السلة | Item added to cart');
+        }
+        
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cartItems');
+            const cartCountElement = document.getElementById('cartCount');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+            
+            // Update cart items
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = `<div class="empty-cart" data-ar="السلة فارغة" data-en="Cart is empty">${document.dir === 'rtl' ? 'السلة فارغة' : 'Cart is empty'}</div>`;
+            } else {
+                cartItemsElement.innerHTML = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    total += item.price * item.quantity;
+                    
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+                    itemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} ${document.dir === 'rtl' ? 'درهم' : 'AED'}</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <span class="remove-item" onclick="removeFromCart('${item.name}')"><i class="fas fa-trash"></i></span>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.name}', ${item.quantity - 1})">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.name}', ${item.quantity + 1})">+</button>
+                        </div>
+                    `;
+                    
+                    cartItemsElement.appendChild(itemElement);
+                });
+                
+                cartTotalElement.textContent = total;
+            }
+        }
+        
+        function updateQuantity(name, newQuantity) {
+            const item = cart.find(item => item.name === name);
+            
+            if (item) {
+                if (newQuantity <= 0) {
+                    cart = cart.filter(item => item.name !== name);
+                } else {
+                    item.quantity = newQuantity;
+                }
+                
+                updateCart();
+            }
+        }
+        
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+        
+        function checkout() {
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            const notes = document.getElementById('customer-notes').value;
+            
+            if (!name || !phone || !address) {
+                showNotification(document.dir === 'rtl' ? 'الرجاء ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+                return;
+            }
+            
+            let message = document.dir === 'rtl' ? 
+                `*طلب جديد من مطعم ريدان المندي*\n\n` +
+                `*الاسم:* ${name}\n` +
+                `*الهاتف:* ${phone}\n` +
+                `*العنوان:* ${address}\n` +
+                `*ملاحظات:* ${notes || 'لا يوجد'}\n\n` +
+                `*الطلبات:*\n` :
+                `*New Order from Redan Mandi Restaurant*\n\n` +
+                `*Name:* ${name}\n` +
+                `*Phone:* ${phone}\n` +
+                `*Address:* ${address}\n` +
+                `*Notes:* ${notes || 'None'}\n\n` +
+                `*Order Items:*\n`;
+            
+            cart.forEach(item => {
+                message += `- ${item.name} x${item.quantity} = ${item.price * item.quantity} ${document.dir === 'rtl' ? 'درهم' : 'AED'}\n`;
+            });
+            
+            message += `\n*${document.dir === 'rtl' ? 'الإجمالي:' : 'Total:'}* ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} ${document.dir === 'rtl' ? 'درهم' : 'AED'}`;
+            
+            const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2500);
+        }
+        
+        // Language switching functionality
+        function switchLanguage(lang) {
+            const langButtons = document.querySelectorAll('.lang-switcher button');
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            
+            if (lang === 'ar') {
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                document.querySelector('.lang-switcher button:nth-child(1)').classList.add('active');
+            } else {
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                document.querySelector('.lang-switcher button:nth-child(2)').classList.add('active');
+            }
+            
+            updateTextContent();
+            updateCart();
+        }
+        
+        function updateTextContent() {
+            const isRTL = document.dir === 'rtl';
+            
+            // Update elements with data-ar and data-en attributes
+            document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    const placeholderAttr = isRTL ? 'data-ar-placeholder' : 'data-en-placeholder';
+                    if (element.hasAttribute(placeholderAttr)) {
+                        element.placeholder = element.getAttribute(placeholderAttr);
+                    }
+                } else {
+                    const text = isRTL ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                    if (text) {
+                        element.textContent = text;
+                    }
+                }
+            });
+            
+            // Update logo image based on language
+            const logoImage = document.getElementById('logoImage');
+            if (logoImage) {
+                logoImage.src = isRTL ? 
+                    'https://i.imgur.com/placeholder-ar.png' : // Replace with your Arabic logo URL
+                    'https://i.imgur.com/placeholder-en.png';  // Replace with your English logo URL
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTextContent();
+            
+            // Set Arabic as default language
+            switchLanguage('ar');
+        });
+    </script>
+</body>
+</html>
