@@ -1,88 +1,1004 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مطعم ريدان للمندي</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff8f0;
-      color: #333;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #cfa66a;
-    }
-    header img {
-      height: 60px;
-    }
-    header select {
-      padding: 5px;
-      font-size: 16px;
-    }
-    .content {
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .menu-item {
-      background-color: #fff;
-      margin: 10px auto;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 600px;
-    }
-    .whatsapp-button {
-      display: block;
-      width: fit-content;
-      margin: 30px auto;
-      padding: 10px 20px;
-      background-color: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 18px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم ريدان المندي - طلب الكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c52d2f;
+            --secondary: #e6a756;
+            --dark: #2a2a2a;
+            --light: #f8f8f8;
+            --success: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            background-color: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .item-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .item-details {
+            padding: 1.5rem;
+        }
+        
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .item-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .item-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #a82527;
+        }
+        
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 101;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s;
+            z-index: 102;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            left: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .cart-items {
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: bold;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background-color: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .quantity {
+            margin: 0 0.5rem;
+        }
+        
+        .remove-item {
+            color: #ff4d4d;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkout-form {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .checkout-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #3d8b40;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeInOut 2.5s ease-in-out;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(50%) translateY(20px); }
+            10% { opacity: 1; transform: translateX(50%) translateY(0); }
+            90% { opacity: 1; transform: translateX(50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(50%) translateY(20px); }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-items {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 0.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="shaar.png" alt="شعار ريدان للمندي">
-    <select id="langSwitcher">
-      <option value="ar">العربية</option>
-      <option value="en">English</option>
-    </select>
-  </header>  <div class="content">
-    <h1 data-ar="قائمة الطعام" data-en="Menu">قائمة الطعام</h1><div class="menu-item">
-  <h2 data-ar="مندي لحم" data-en="Mandi Lamb">مندي لحم</h2>
-  <p data-ar="طبق تقليدي من الأرز واللحم" data-en="Traditional rice and lamb dish">طبق تقليدي من الأرز واللحم</p>
-</div>
-
-<div class="menu-item">
-  <h2 data-ar="مندي دجاج" data-en="Mandi Chicken">مندي دجاج</h2>
-  <p data-ar="دجاج مشوي مع أرز المندي" data-en="Grilled chicken with mandi rice">دجاج مشوي مع أرز المندي</p>
-</div>
-
-<a href="https://wa.me/971581505066" class="whatsapp-button" target="_blank" data-ar="اطلب عبر واتساب" data-en="Order via WhatsApp">اطلب عبر واتساب</a>
-
-  </div>  <script>
-    const langSwitcher = document.getElementById("langSwitcher");
-    const elements = document.querySelectorAll("[data-ar]");
-
-    langSwitcher.addEventListener("change", (e) => {
-      const lang = e.target.value;
-      elements.forEach(el => {
-        el.innerText = el.getAttribute(`data-${lang}`);
-      });
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    });
-  </script></body>
+    <header>
+        <div class="logo">مطعم ريدان المندي</div>
+        <div class="tagline">أصالة الطعم اليمني إلى باب منزلك</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#chicken">قائمة الدجاج</a></li>
+            <li><a href="#lamb">قائمة اللحم</a></li>
+            <li><a href="#salads">السلطات</a></li>
+            <li><a href="#beverages">المشروبات</a></li>
+            <li><a href="#desserts">الحلويات</a></li>
+        </ul>
+    </nav>
+    
+    <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>سلة المشتريات</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">السلة فارغة</div>
+        </div>
+        <div class="cart-total">
+            الإجمالي: <span id="cartTotal">0</span> درهم
+        </div>
+        
+        <div class="checkout-form">
+            <div class="form-group">
+                <label for="customer-name">الاسم الكامل</label>
+                <input type="text" id="customer-name" placeholder="ادخل اسمك">
+            </div>
+            <div class="form-group">
+                <label for="customer-phone">رقم الهاتف</label>
+                <input type="tel" id="customer-phone" placeholder="ادخل رقم الهاتف">
+            </div>
+            <div class="form-group">
+                <label for="customer-address">عنوان التوصيل</label>
+                <textarea id="customer-address" rows="3" placeholder="ادخل عنوان التفصيلي"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="customer-notes">ملاحظات إضافية</label>
+                <textarea id="customer-notes" rows="2" placeholder="ملاحظات حول الطلب"></textarea>
+            </div>
+        </div>
+        
+        <button class="checkout-btn" onclick="checkout()">
+            <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
+        </button>
+    </div>
+    
+    <div class="container">
+        <section id="home">
+            <div class="menu-category">
+                <h2 class="section-title">مرحباً بكم في مطعم ريدان المندي</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم</p>
+            </div>
+        </section>
+        
+        <section id="chicken" class="menu-category">
+            <h2 class="section-title">قائمة الدجاج</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مندي دجاج</h3>
+                        <div class="item-price">30 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي دجاج', 30)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مضبي دجاج</h3>
+                        <div class="item-price">33 درهم</div>
+                        <p class="item-desc">دجاج مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي دجاج', 33)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون دجاج</h3>
+                        <div class="item-price">33 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون دجاج', 33)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كبسة دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">دجاج مع أرز بسمتي ومكسرات</p>
+                        <button class="add-to-cart" onclick="addToCart('كبسة دجاج', 35)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون ريدان دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">طبق الدجاج المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان دجاج', 35)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ دجاج', 35)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="lamb" class="menu-category">
+            <h2 class="section-title">قائمة اللحم</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مندي لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مضبي لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">محمود لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ حسب وصفة الشيف السرية</p>
+                        <button class="add-to-cart" onclick="addToCart('محمود لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مدفون ريدان لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">طبق اللحم المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان لحم', 60)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ لحم كتف</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">كتف لحم مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ لحم كتف', 75)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">حنيذ جنب</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">قطع لحم ضلوع مع تتبيلة خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ جنب', 75)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">عوكه لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة تقليدية بنكهات غنية</p>
+                        <button class="add-to-cart" onclick="addToCart('عوكه لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">مقلقل لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">قطع لحم مطبوخة مع بهارات خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('مقلقل لحم', 50)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">محمر لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مع أرز محمر بنكهات مميزة</p>
+                        <button class="add-to-cart" onclick="addToCart('محمر لحم', 55)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">بخاري لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">لحم مع أرز بسمتي وبهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('بخاري لحم', 50)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="salads" class="menu-category">
+            <h2 class="section-title">السلطات</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">فتوش</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطة خضار مع خبز مقرمش وصلصة رمان</p>
+                        <button class="add-to-cart" onclick="addToCart('فتوش', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">تبوله</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطة بقدونس مع برغل وطماطم وصلصة ليمون</p>
+                        <button class="add-to-cart" onclick="addToCart('تبوله', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">روب خيار</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">لبن مع خيار ونعناع</p>
+                        <button class="add-to-cart" onclick="addToCart('روب خيار', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة جرجير</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">جرجير طازج مع كرزية وصوص بلسميك</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة جرجير', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة عربيه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">خضروات مقطعة مع ليمون وزيت زيتون</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة عربيه', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سلطة ريدان</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطتنا المميزة مع صوص خاص</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة ريدان', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="beverages" class="menu-category">
+            <h2 class="section-title">المشروبات</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كينزا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب شعير منعش</p>
+                        <button class="add-to-cart" onclick="addToCart('كينزا', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80</div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">بيبسي</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب غازي كلاسيكي</p>
+                        <button class="add-to-cart" onclick="addToCart('بيبسي', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">ديو</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب حمضيات غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ديو', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">ميرندا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب برتقال غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ميرندا', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">سفن أب</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب ليمون-لايم غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('سفن أب', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="desserts" class="menu-category">
+            <h2 class="section-title">الحلويات</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كنافه قشطه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالقشطة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه قشطه', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كنافه جبنه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالجبنة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه جبنه', 15)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">كنافه شوكولاته</h3>
+                        <div class="item-price">16 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالشوكولاته</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه شوكولاته', 16)">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>مطعم ريدان المندي</h3>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> 00971588155123</p>
+                <p><i class="fas fa-map-marker-alt"></i> [عنوان المطعم هنا]</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/971588155123"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p class="delivery-hours">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
+            <p>&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // متغيرات السلة
+        let cart = [];
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        
+        // عرض/إخفاء السلة
+        function toggleCart() {
+            cartSidebar.classList.toggle('open');
+        }
+        
+        // إضافة عنصر للسلة
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${name} تمت إضافته للسلة`);
+        }
+        
+        // تحديث عرض السلة
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">السلة فارغة</div>';
+            } else {
+                cart.forEach(item => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price * item.quantity} درهم</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                            <span class="remove-item" onclick="removeItem('${item.name}')"><i class="fas fa-times"></i></span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+            }
+            
+            // تحديث العدد الإجمالي
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // تحديث المبلغ الإجمالي
+            const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartTotal.textContent = totalAmount;
+        }
+        
+        // تغيير الكمية
+        function changeQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.name !== name);
+                    showNotification(`${name} تم إزالته من السلة`);
+                }
+                
+                updateCart();
+            }
+        }
+        
+        // إزالة عنصر من السلة
+        function removeItem(name) {
+            cart = cart.filter(item => item.name !== name);
+            showNotification(`${name} تم إزالته من السلة`);
+            updateCart();
+        }
+        
+        // إرسال الطلب عبر واتساب
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('السلة فارغة! الرجاء إضافة عناصر أولاً');
+                return;
+            }
+            
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            const notes = document.getElementById('customer-notes').value;
+            
+            if (!name || !phone || !address) {
+                showNotification('الرجاء إدخال جميع المعلومات المطلوبة');
+                return;
+            }
+            
+            let message = `مرحباً، أريد طلب التالي من مطعم ريدان المندي:\n\n`;
+            message += `الاسم: ${name}\n`;
+            message += `رقم الهاتف: ${phone}\n`;
+            message += `العنوان: ${address}\n`;
+            message += `ملاحظات: ${notes || 'لا يوجد'}\n\n`;
+            message += `تفاصيل الطلب:\n`;
+            
+            cart.forEach(item => {
+                message += `${item.name} × ${item.quantity} - ${item.price * item.quantity} درهم\n`;
+            });
+            
+            message += `\nالمجموع: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0)} درهم`;
+            
+            const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // عرض إشعار
+        function showNotification(text) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = text;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // إغلاق السلة عند النقر خارجها
+        document.addEventListener('click', (event) => {
+            if (!cartSidebar.contains(event.target) && event.target.className !== 'cart-icon' && 
+                !event.target.closest('.cart-icon')) {
+                cartSidebar.classList.remove('open');
+            }
+        });
+        
+        // التمرير السلس للقوائم
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
 </html>
