@@ -464,6 +464,71 @@
             right: auto;
             left: -400px;
         }
+        .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.cash-on-delivery-btn, .online-payment-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.cash-on-delivery-btn {
+  background-color: #e6a756;
+  color: #2a2a2a;
+}
+
+.online-payment-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cash-on-delivery-btn:hover {
+  background-color: #d89b4a;
+}
+
+.online-payment-btn:hover {
+  background-color: #3d8b40;
+}
+
+.payment-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.close-payment {
+  float: right;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 
         body[dir="ltr"] .cart-sidebar.open {
             left: 0;
@@ -507,6 +572,33 @@
                 margin: 0.3rem;
             }
         }
+        <div class="payment-modal" id="paymentModal">
+  <div class="payment-modal-content">
+    <span class="close-payment" onclick="closePaymentModal()">&times;</span>
+    <h2 data-ar="إتمام الدفع الإلكتروني" data-en="Complete Online Payment">إتمام الدفع الإلكتروني</h2>
+    <div id="paymentGatewayContainer">
+      <!-- سيتم عرض بوابة الدفع هنا -->
+    </div>
+    <p data-ar="سيتم تحويلك إلى صفحة الدفع الآمن" data-en="You will be redirected to secure payment page">
+      سيتم تحويلك إلى صفحة الدفع الآمن
+    </p>
+    <button class="checkout-btn" onclick="redirectToPayment()">
+      <i class="fas fa-lock"></i>
+      <span data-ar="الانتقال للدفع" data-en="Proceed to Payment">الانتقال للدفع</span>
+    </button>
+  </div>
+</div>
+        <div class="payment-options">
+  <button class="cash-on-delivery-btn" onclick="checkout('cash')">
+    <i class="fas fa-money-bill-wave"></i>
+    <span data-ar="الدفع عند الاستلام" data-en="Cash on Delivery">الدفع عند الاستلام</span>
+  </button>
+  
+  <button class="online-payment-btn" onclick="checkout('online')">
+    <i class="fas fa-credit-card"></i>
+    <span data-ar="الدفع الإلكتروني" data-en="Online Payment">الدفع الإلكتروني</span>
+  </button>
+</div>
     </style>
 </head>
 <body dir="rtl">
@@ -881,16 +973,91 @@
             cart = cart.filter(item => item.name !== name);
             updateCart();
         }
-        
-        function checkout() {
-            const name = document.getElementById('customer-name').value;
-            const phone = document.getElementById('customer-phone').value;
-            const address = document.getElementById('customer-address').value;
-            const notes = document.getElementById('customer-notes').value;
-            
-            if (!name || !phone || !address) {
-                showNotification(document.dir === 'rtl' ? 'الرجاء ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
-                return;
+        // دالة الدفع المعدلة
+function checkout(paymentMethod) {
+  const name = document.getElementById('customer-name').value;
+  const phone = document.getElementById('customer-phone').value;
+  const address = document.getElementById('customer-address').value;
+  const notes = document.getElementById('customer-notes').value;
+  
+  if (!name || !phone || !address) {
+    showNotification(document.dir === 'rtl' ? 'الرجاء ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+    return;
+  }
+  
+  const deliveryFee = 8;
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const total = subtotal + deliveryFee;
+  
+  if (paymentMethod === 'cash') {
+    sendWhatsAppOrder(total, false);
+  } else if (paymentMethod === 'online') {
+    document.getElementById('paymentModal').style.display = 'flex';
+    // هنا يمكنك إعداد بيانات الدفع
+  }
+}
+
+function closePaymentModal() {
+  document.getElementById('paymentModal').style.display = 'none';
+}
+
+function redirectToPayment() {
+  const total = calculateTotal();
+  const paymentUrl = generatePaymentLink(total);
+  window.open(paymentUrl, '_blank');
+  closePaymentModal();
+}
+
+function calculateTotal() {
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  return subtotal + 8; // + رسوم التوصيل
+}
+
+function generatePaymentLink(amount) {
+  // استبدل هذا برابط بوابة الدفع الفعلية
+  const paymentGateway = "https://example-payment-gateway.com/pay";
+  const orderId = "RDN" + Date.now();
+  const callbackUrl = encodeURIComponent("https://yourwebsite.com/payment-callback");
+  
+  return `${paymentGateway}?amount=${amount}&orderId=${orderId}&callback=${callbackUrl}`;
+}
+
+function sendWhatsAppOrder(total, isPaid) {
+  const name = document.getElementById('customer-name').value;
+  const phone = document.getElementById('customer-phone').value;
+  const address = document.getElementById('customer-address').value;
+  const notes = document.getElementById('customer-notes').value;
+  
+  let message = document.dir === 'rtl' ? 
+    `*طلب جديد من مطعم ريدان المندي*\n\n` +
+    `*الدفع:* ${isPaid ? 'تم الدفع إلكترونياً' : 'الدفع عند الاستلام'}\n` +
+    `*الاسم:* ${name}\n` +
+    `*الهاتف:* ${phone}\n` +
+    `*العنوان:* ${address}\n` +
+    `*ملاحظات:* ${notes || 'لا يوجد'}\n\n` +
+    `*الطلبات:*\n` :
+    `*New Order from Redan Mandi Restaurant*\n\n` +
+    `*Payment:* ${isPaid ? 'Paid Online' : 'Cash on Delivery'}\n` +
+    `*Name:* ${name}\n` +
+    `*Phone:* ${phone}\n` +
+    `*Address:* ${address}\n` +
+    `*Notes:* ${notes || 'None'}\n\n` +
+    `*Order Items:*\n`;
+  
+  cart.forEach(item => {
+    message += `- ${item.name} x${item.quantity} = ${item.price * item.quantity} ${document.dir === 'rtl' ? 'درهم' : 'AED'}\n`;
+  });
+  
+  message += `\n${document.dir === 'rtl' ? '*رسوم التوصيل:*' : '*Delivery Fee:*'} 8 ${document.dir === 'rtl' ? 'درهم' : 'AED'}`;
+  message += `\n*${document.dir === 'rtl' ? 'الإجمالي:' : 'Total:'}* ${total} ${document.dir === 'rtl' ? 'درهم' : 'AED'}`;
+  
+  const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank');
+}
+function generatePaymentLink(amount) {
+  const businessEmail = "your-paypal-email@example.com";
+  return `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${businessEmail}&amount=${amount}&currency_code=AED&item_name=Redan+Mandi+Order`;
+}
             }
             
             let message = document.dir === 'rtl' ? 
