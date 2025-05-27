@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redan Mandi - Authentic Yemeni Cuisine</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>مطعم ريدان المندي - طلب الكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #c52d2f;
@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', Arial, sans-serif;
         }
         
         body {
@@ -103,8 +103,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 50%;
+            transform: translateX(50%);
             width: 100px;
             height: 3px;
             background-color: var(--secondary);
@@ -149,7 +149,8 @@
             color: var(--dark);
         }
         
-        .item-price {color: var(--primary);
+        .item-price {
+            color: var(--primary);
             font-weight: bold;
             font-size: 1.1rem;
             margin-bottom: 1rem;
@@ -180,7 +181,7 @@
         .cart-icon {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             background-color: var(--primary);
             color: white;
             width: 50px;
@@ -197,7 +198,7 @@
         .cart-count {
             position: absolute;
             top: -5px;
-            right: -5px;
+            left: -5px;
             background-color: var(--secondary);
             color: var(--dark);
             width: 20px;
@@ -213,19 +214,19 @@
         .cart-sidebar {
             position: fixed;
             top: 0;
-            right: -400px;
+            left: -400px;
             width: 400px;
             height: 100%;
             background-color: white;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s;
             z-index: 102;
             padding: 1.5rem;
             overflow-y: auto;
         }
         
         .cart-sidebar.open {
-            right: 0;
+            left: 0;
         }
         
         .cart-header {
@@ -291,15 +292,36 @@
         
         .remove-item {
             color: #ff4d4d;
-            margin-left: 1rem;
+            margin-right: 1rem;
             cursor: pointer;
         }
         
         .cart-total {
             font-weight: bold;
             font-size: 1.2rem;
-            text-align: right;
+            text-align: left;
             margin-bottom: 1.5rem;
+        }
+        
+        .checkout-form {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         
         .checkout-btn {
@@ -311,11 +333,22 @@
             cursor: pointer;
             width: 100%;
             font-weight: bold;
-            font-size: 1rem;transition: background-color 0.3s;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
         
         .checkout-btn:hover {
             background-color: #3d8b40;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
         }
         
         footer {
@@ -346,6 +379,27 @@
             margin: 1rem 0;
         }
         
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeInOut 2.5s ease-in-out;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(50%) translateY(20px); }
+            10% { opacity: 1; transform: translateX(50%) translateY(0); }
+            90% { opacity: 1; transform: translateX(50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(50%) translateY(20px); }
+        }
+        
         @media (max-width: 768px) {
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -353,7 +407,7 @@
             
             .cart-sidebar {
                 width: 100%;
-                right: -100%;
+                left: -100%;
             }
             
             nav ul {
@@ -368,18 +422,18 @@
 </head>
 <body>
     <header>
-        <div class="logo">REDAN MANDI</div>
-        <div class="tagline">Authentic Yemeni Cuisine - Delivered to Your Doorstep</div>
+        <div class="logo">مطعم ريدان المندي</div>
+        <div class="tagline">أصالة الطعم اليمني إلى باب منزلك</div>
     </header>
     
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#chicken">Chicken</a></li>
-            <li><a href="#lamb">Lamb</a></li>
-            <li><a href="#salads">Salads</a></li>
-            <li><a href="#beverages">Beverages</a></li>
-            <li><a href="#desserts">Desserts</a></li>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#chicken">قائمة الدجاج</a></li>
+            <li><a href="#lamb">قائمة اللحم</a></li>
+            <li><a href="#salads">السلطات</a></li>
+            <li><a href="#beverages">المشروبات</a></li>
+            <li><a href="#desserts">الحلويات</a></li>
         </ul>
     </nav>
     
@@ -390,345 +444,381 @@
     
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h2>Your Order</h2>
+            <h2>سلة المشتريات</h2>
             <button class="close-cart" onclick="toggleCart()">&times;</button>
         </div>
         <div class="cart-items" id="cartItems">
-            <!-- Cart items will be added here dynamically -->
+            <div class="empty-cart">السلة فارغة</div>
         </div>
         <div class="cart-total">
-            Total: <span id="cartTotal">0</span> AED
+            الإجمالي: <span id="cartTotal">0</span> درهم
         </div>
+        
+        <div class="checkout-form">
+            <div class="form-group">
+                <label for="customer-name">الاسم الكامل</label>
+                <input type="text" id="customer-name" placeholder="ادخل اسمك">
+            </div>
+            <div class="form-group">
+                <label for="customer-phone">رقم الهاتف</label>
+                <input type="tel" id="customer-phone" placeholder="ادخل رقم الهاتف">
+            </div>
+            <div class="form-group">
+                <label for="customer-address">عنوان التوصيل</label>
+                <textarea id="customer-address" rows="3" placeholder="ادخل عنوان التفصيلي"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="customer-notes">ملاحظات إضافية</label>
+                <textarea id="customer-notes" rows="2" placeholder="ملاحظات حول الطلب"></textarea>
+            </div>
+        </div>
+        
         <button class="checkout-btn" onclick="checkout()">
-            <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+            <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
         </button>
     </div>
     
     <div class="container">
+        <section id="home">
+            <div class="menu-category">
+                <h2 class="section-title">مرحباً بكم في مطعم ريدان المندي</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">نقدم لكم أطيب وأشهى المأكولات اليمنية الأصيلة بطعم لا يقاوم</p>
+            </div>
+        </section>
+        
         <section id="chicken" class="menu-category">
-            <h2 class="section-title">Chicken Dishes</h2>
+            <h2 class="section-title">قائمة الدجاج</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chicken Mandi</h3>
-                        <div class="item-price">30 AED</div>
-                        <p class="item-desc">Traditional Yemeni chicken with fragrant rice cooked in underground oven</p>
-                        <button class="add-to-cart" onclick="addToCart('Chicken Mandi', 30)">Add to Cart</button>
+                        <h3 class="item-name">مندي دجاج</h3>
+                        <div class="item-price">30 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي دجاج', 30)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chicken Madhbi</h3>
-                        <div class="item-price">33 AED</div>
-                        <p class="item-desc">Grilled chicken with special spices served with rice</p>
-                        <button class="add-to-cart" onclick="addToCart('Chicken Madhbi', 33)">Add to Cart</button>
+                        <h3 class="item-name">مضبي دجاج</h3>
+                        <div class="item-price">33 درهم</div>
+                        <p class="item-desc">دجاج مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي دجاج', 33)">أضف إلى السلة</button>
                     </div>
-                </div><div class="menu-item">
+                </div>
+                
+                <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chicken Madfoon</h3>
-                        <div class="item-price">33 AED</div>
-                        <p class="item-desc">Slow-cooked chicken with aromatic spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Chicken Madfoon', 33)">Add to Cart</button>
+                        <h3 class="item-name">مدفون دجاج</h3>
+                        <div class="item-price">33 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون دجاج', 33)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chicken Kabsa</h3>
-                        <div class="item-price">35 AED</div>
-                        <p class="item-desc">Spiced chicken with basmati rice and nuts</p>
-                        <button class="add-to-cart" onclick="addToCart('Chicken Kabsa', 35)">Add to Cart</button>
+                        <h3 class="item-name">كبسة دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">دجاج مع أرز بسمتي ومكسرات</p>
+                        <button class="add-to-cart" onclick="addToCart('كبسة دجاج', 35)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Redan Special Chicken Madfoon</h3>
-                        <div class="item-price">35 AED</div>
-                        <p class="item-desc">Our signature chicken dish with special blend of spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Redan Special Chicken Madfoon', 35)">Add to Cart</button>
+                        <h3 class="item-name">مدفون ريدان دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">طبق الدجاج المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان دجاج', 35)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chicken Haneeth</h3>
-                        <div class="item-price">35 AED</div>
-                        <p class="item-desc">Tender chicken slow-cooked to perfection</p>
-                        <button class="add-to-cart" onclick="addToCart('Chicken Haneeth', 35)">Add to Cart</button>
+                        <h3 class="item-name">حنيذ دجاج</h3>
+                        <div class="item-price">35 درهم</div>
+                        <p class="item-desc">دجاج مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ دجاج', 35)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="lamb" class="menu-category">
-            <h2 class="section-title">Lamb Dishes</h2>
+            <h2 class="section-title">قائمة اللحم</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Mandi</h3>
-                        <div class="item-price">55 AED</div>
-                        <p class="item-desc">Traditional Yemeni lamb with fragrant rice cooked in underground oven</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Mandi', 55)">Add to Cart</button>
+                        <h3 class="item-name">مندي لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة المندي التقليدية مع أرز عطري</p>
+                        <button class="add-to-cart" onclick="addToCart('مندي لحم', 55)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Madhbi</h3>
-                        <div class="item-price">60 AED</div><p class="item-desc">Grilled lamb with special spices served with rice</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Madhbi', 60)">Add to Cart</button>
+                        <h3 class="item-name">مضبي لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مشوي مع بهارات خاصة وأرز</p>
+                        <button class="add-to-cart" onclick="addToCart('مضبي لحم', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Madfoon</h3>
-                        <div class="item-price">60 AED</div>
-                        <p class="item-desc">Slow-cooked lamb with aromatic spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Madfoon', 60)">Add to Cart</button>
+                        <h3 class="item-name">مدفون لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ ببطء مع بهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون لحم', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Mahmood</h3>
-                        <div class="item-price">60 AED</div>
-                        <p class="item-desc">Special lamb preparation with our chef's secret recipe</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Mahmood', 60)">Add to Cart</button>
+                        <h3 class="item-name">محمود لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">لحم مطبوخ حسب وصفة الشيف السرية</p>
+                        <button class="add-to-cart" onclick="addToCart('محمود لحم', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Redan Special Lamb Madfoon</h3>
-                        <div class="item-price">60 AED</div>
-                        <p class="item-desc">Our signature lamb dish with special blend of spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Redan Special Lamb Madfoon', 60)">Add to Cart</button>
+                        <h3 class="item-name">مدفون ريدان لحم</h3>
+                        <div class="item-price">60 درهم</div>
+                        <p class="item-desc">طبق اللحم المميز بمزيج خاص من البهارات</p>
+                        <button class="add-to-cart" onclick="addToCart('مدفون ريدان لحم', 60)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Haneeth Lamb Shoulder</h3>
-                        <div class="item-price">75 AED</div>
-                        <p class="item-desc">Tender lamb shoulder slow-cooked to perfection</p>
-                        <button class="add-to-cart" onclick="addToCart('Haneeth Lamb Shoulder', 75)">Add to Cart</button>
+                        <h3 class="item-name">حنيذ لحم كتف</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">كتف لحم مطبوخ ببطء حتى يصبح طرياً جداً</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ لحم كتف', 75)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Haneeth Lamb Ribs</h3>
-                        <div class="item-price">75 AED</div>
-                        <p class="item-desc">Juicy lamb ribs with our special marinade</p>
-                        <button class="add-to-cart" onclick="addToCart('Haneeth Lamb Ribs', 75)">Add to Cart</button>
+                        <h3 class="item-name">حنيذ جنب</h3>
+                        <div class="item-price">75 درهم</div>
+                        <p class="item-desc">قطع لحم ضلوع مع تتبيلة خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('حنيذ جنب', 75)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Okka</h3><div class="item-price">55 AED</div>
-                        <p class="item-desc">Traditional lamb preparation with rich flavors</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Okka', 55)">Add to Cart</button>
+                        <h3 class="item-name">عوكه لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مطبوخ بطريقة تقليدية بنكهات غنية</p>
+                        <button class="add-to-cart" onclick="addToCart('عوكه لحم', 55)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Maqluqal</h3>
-                        <div class="item-price">50 AED</div>
-                        <p class="item-desc">Lamb pieces cooked with special spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Maqluqal', 50)">Add to Cart</button>
+                        <h3 class="item-name">مقلقل لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">قطع لحم مطبوخة مع بهارات خاصة</p>
+                        <button class="add-to-cart" onclick="addToCart('مقلقل لحم', 50)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Muhammar</h3>
-                        <div class="item-price">55 AED</div>
-                        <p class="item-desc">Sweet and savory lamb dish with dates</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Muhammar', 55)">Add to Cart</button>
+                        <h3 class="item-name">محمر لحم</h3>
+                        <div class="item-price">55 درهم</div>
+                        <p class="item-desc">لحم مع أرز محمر بنكهات مميزة</p>
+                        <button class="add-to-cart" onclick="addToCart('محمر لحم', 55)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1518492104633-130d0cc84637?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Lamb Bukhari</h3>
-                        <div class="item-price">50 AED</div>
-                        <p class="item-desc">Fragrant lamb with basmati rice and spices</p>
-                        <button class="add-to-cart" onclick="addToCart('Lamb Bukhari', 50)">Add to Cart</button>
+                        <h3 class="item-name">بخاري لحم</h3>
+                        <div class="item-price">50 درهم</div>
+                        <p class="item-desc">لحم مع أرز بسمتي وبهارات عطرية</p>
+                        <button class="add-to-cart" onclick="addToCart('بخاري لحم', 50)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="salads" class="menu-category">
-            <h2 class="section-title">Salads</h2>
+            <h2 class="section-title">السلطات</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Fattoush</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Lebanese bread salad with mixed greens and pomegranate dressing</p>
-                        <button class="add-to-cart" onclick="addToCart('Fattoush', 15)">Add to Cart</button>
+                        <h3 class="item-name">فتوش</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطة خضار مع خبز مقرمش وصلصة رمان</p>
+                        <button class="add-to-cart" onclick="addToCart('فتوش', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Tabbouleh</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Parsley salad with bulgur, tomatoes, and lemon dressing</p>
-                        <button class="add-to-cart" onclick="addToCart('Tabbouleh', 15)">Add to Cart</button>
+                        <h3 class="item-name">تبوله</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطة بقدونس مع برغل وطماطم وصلصة ليمون</p>
+                        <button class="add-to-cart" onclick="addToCart('تبوله', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Yogurt Cucumber</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Fresh yogurt with cucumber and mint</p>
-                        <button class="add-to-cart" onclick="addToCart('Yogurt Cucumber', 15)">Add to Cart</button>
+                        <h3 class="item-name">روب خيار</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">لبن مع خيار ونعناع</p>
+                        <button class="add-to-cart" onclick="addToCart('روب خيار', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Arugula Salad</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Fresh arugula with cherry tomatoes and balsamic dressing</p>
-                        <button class="add-to-cart" onclick="addToCart('Arugula Salad', 15)">Add to Cart</button>
+                        <h3 class="item-name">سلطة جرجير</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">جرجير طازج مع كرزية وصوص بلسميك</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة جرجير', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Arabic Salad</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Chopped vegetables with lemon and olive oil</p>
-                        <button class="add-to-cart" onclick="addToCart('Arabic Salad', 15)">Add to Cart</button>
+                        <h3 class="item-name">سلطة عربيه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">خضروات مقطعة مع ليمون وزيت زيتون</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة عربيه', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Redan Special Salad</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Our signature salad with special dressing</p>
-                        <button class="add-to-cart" onclick="addToCart('Redan Special Salad', 15)">Add to Cart</button>
+                        <h3 class="item-name">سلطة ريدان</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">سلطتنا المميزة مع صوص خاص</p>
+                        <button class="add-to-cart" onclick="addToCart('سلطة ريدان', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="beverages" class="menu-category">
-            <h2 class="section-title">Beverages</h2>
+            <h2 class="section-title">المشروبات</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Kinza</h3>
-                        <div class="item-price">4 AED</div>
-                        <p class="item-desc">Refreshing malt beverage</p>
-                        <button class="add-to-cart" onclick="addToCart('Kinza', 4)">Add to Cart</button>
+                        <h3 class="item-name">كينزا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب شعير منعش</p>
+                        <button class="add-to-cart" onclick="addToCart('كينزا', 4)">أضف إلى السلة</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80</div>
+                
+                <div class="menu-item">
+                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="item-details">
+                        <h3 class="item-name">بيبسي</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب غازي كلاسيكي</p>
+                        <button class="add-to-cart" onclick="addToCart('بيبسي', 4)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Pepsi</h3>
-                        <div class="item-price">4 AED</div>
-                        <p class="item-desc">Classic cola drink</p>
-                        <button class="add-to-cart" onclick="addToCart('Pepsi', 4)">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item"><div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">Dew</h3>
-                        <div class="item-price">4 AED</div>
-                        <p class="item-desc">Mountain Dew citrus soda</p>
-                        <button class="add-to-cart" onclick="addToCart('Dew', 4)">Add to Cart</button>
+                        <h3 class="item-name">ديو</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب حمضيات غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ديو', 4)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Mirinda</h3>
-                        <div class="item-price">4 AED</div>
-                        <p class="item-desc">Orange flavored soda</p>
-                        <button class="add-to-cart" onclick="addToCart('Mirinda', 4)">Add to Cart</button>
+                        <h3 class="item-name">ميرندا</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب برتقال غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('ميرندا', 4)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">7Up</h3>
-                        <div class="item-price">4 AED</div>
-                        <p class="item-desc">Lemon-lime flavored soda</p>
-                        <button class="add-to-cart" onclick="addToCart('7Up', 4)">Add to Cart</button>
+                        <h3 class="item-name">سفن أب</h3>
+                        <div class="item-price">4 درهم</div>
+                        <p class="item-desc">مشروب ليمون-لايم غازي</p>
+                        <button class="add-to-cart" onclick="addToCart('سفن أب', 4)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="desserts" class="menu-category">
-            <h2 class="section-title">Desserts</h2>
+            <h2 class="section-title">الحلويات</h2>
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Kunafa with Cream</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Crispy pastry filled with cream</p>
-                        <button class="add-to-cart" onclick="addToCart('Kunafa with Cream', 15)">Add to Cart</button>
+                        <h3 class="item-name">كنافه قشطه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالقشطة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه قشطه', 15)">أضف إلى السلة</button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Kunafa with Cheese</h3>
-                        <div class="item-price">15 AED</div>
-                        <p class="item-desc">Crispy pastry filled with cheese</p>
-                        <button class="add-to-cart" onclick="addToCart('</div>
+                        <h3 class="item-name">كنافه جبنه</h3>
+                        <div class="item-price">15 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالجبنة</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه جبنه', 15)">أضف إلى السلة</button>
+                    </div>
                 </div>
                 
                 <div class="menu-item">
                     <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="item-details">
-                        <h3 class="item-name">Chocolate Kunafa</h3>
-                        <div class="item-price">16 AED</div>
-                        <p class="item-desc">Crispy pastry with chocolate filling</p>
-                        <button class="add-to-cart" onclick="addToCart('Chocolate Kunafa', 16)">Add to Cart</button>
+                        <h3 class="item-name">كنافه شوكولاته</h3>
+                        <div class="item-price">16 درهم</div>
+                        <p class="item-desc">كنافه مقرمشة محشوة بالشوكولاته</p>
+                        <button class="add-to-cart" onclick="addToCart('كنافه شوكولاته', 16)">أضف إلى السلة</button>
                     </div>
                 </div>
             </div>
@@ -737,32 +827,35 @@
     
     <footer>
         <div class="footer-content">
-            <h3>Redan Mandi Restaurant</h3>
+            <h3>مطعم ريدان المندي</h3>
             <div class="contact-info">
-                <p><i class="fas fa-phone"></i> +971 58 815 5123</p>
-                <p><i class="fas fa-map-marker-alt"></i> [Your Restaurant Address]</p>
+                <p><i class="fas fa-phone"></i> 00971588155123</p>
+                <p><i class="fas fa-map-marker-alt"></i> [عنوان المطعم هنا]</p>
             </div>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/971588155123"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <p class="delivery-hours">Delivery Hours: 11:00 AM - 11:00 PM</p>
-            <p>&copy; 2023 Redan Mandi. All Rights Reserved.</p>
+            <p class="delivery-hours">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
+            <p>&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
     
     <script>
+        // متغيرات السلة
         let cart = [];
         const cartSidebar = document.getElementById('cartSidebar');
         const cartItemsContainer = document.getElementById('cartItems');
         const cartCount = document.getElementById('cartCount');
         const cartTotal = document.getElementById('cartTotal');
         
+        // عرض/إخفاء السلة
         function toggleCart() {
             cartSidebar.classList.toggle('open');
         }
         
+        // إضافة عنصر للسلة
         function addToCart(name, price) {
             const existingItem = cart.find(item => item.name === name);
             
@@ -777,100 +870,114 @@
             }
             
             updateCart();
-            showAddedToCart(name);
+            showNotification(`${name} تمت إضافته للسلة`);
         }
         
+        // تحديث عرض السلة
         function updateCart() {
-            // Update cart items display
             cartItemsContainer.innerHTML = '';
             
-            cart.forEach(item => {
-                const cartItemElement = document.createElement('div');
-                cartItemElement.className = 'cart-item';
-                cartItemElement.innerHTML = `
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price} AED</div>
-                    </div>
-                    <div class="cart-item-quantity">
-                        <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
-                        <span class="remove-item" onclick="removeItem('${item.name}')"><i class="fas fa-times"></i></span>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItemElement);
-            });
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">السلة فارغة</div>';
+            } else {
+                cart.forEach(item => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price * item.quantity} درهم</div>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
+                            <span class="remove-item" onclick="removeItem('${item.name}')"><i class="fas fa-times"></i></span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+            }
             
-            // Update cart count
+            // تحديث العدد الإجمالي
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             cartCount.textContent = totalItems;
             
-            // Update total
+            // تحديث المبلغ الإجمالي
             const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
             cartTotal.textContent = totalAmount;
         }
         
+        // تغيير الكمية
         function changeQuantity(name, change) {
-            const item = cart.find(item => item.name === name);if (item) {
+            const item = cart.find(item => item.name === name);
+            
+            if (item) {
                 item.quantity += change;
                 
                 if (item.quantity <= 0) {
                     cart = cart.filter(item => item.name !== name);
+                    showNotification(`${name} تم إزالته من السلة`);
                 }
                 
                 updateCart();
             }
         }
         
+        // إزالة عنصر من السلة
         function removeItem(name) {
             cart = cart.filter(item => item.name !== name);
+            showNotification(`${name} تم إزالته من السلة`);
             updateCart();
         }
         
-        function showAddedToCart(name) {
+        // إرسال الطلب عبر واتساب
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('السلة فارغة! الرجاء إضافة عناصر أولاً');
+                return;
+            }
+            
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            const notes = document.getElementById('customer-notes').value;
+            
+            if (!name || !phone || !address) {
+                showNotification('الرجاء إدخال جميع المعلومات المطلوبة');
+                return;
+            }
+            
+            let message = `مرحباً، أريد طلب التالي من مطعم ريدان المندي:\n\n`;
+            message += `الاسم: ${name}\n`;
+            message += `رقم الهاتف: ${phone}\n`;
+            message += `العنوان: ${address}\n`;
+            message += `ملاحظات: ${notes || 'لا يوجد'}\n\n`;
+            message += `تفاصيل الطلب:\n`;
+            
+            cart.forEach(item => {
+                message += `${item.name} × ${item.quantity} - ${item.price * item.quantity} درهم\n`;
+            });
+            
+            message += `\nالمجموع: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0)} درهم`;
+            
+            const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // عرض إشعار
+        function showNotification(text) {
             const notification = document.createElement('div');
             notification.className = 'notification';
-            notification.textContent = ${name} added to cart!;
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.left = '50%';
-            notification.style.transform = 'translateX(-50%)';
-            notification.style.backgroundColor = 'var(--primary)';
-            notification.style.color = 'white';
-            notification.style.padding = '10px 20px';
-            notification.style.borderRadius = '4px';
-            notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-            notification.style.zIndex = '1000';
-            notification.style.animation = 'fadeInOut 2.5s ease-in-out';
-            
+            notification.textContent = text;
             document.body.appendChild(notification);
             
             setTimeout(() => {
                 notification.remove();
-            }, 2500);
+            }, 3000);
         }
         
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            let message = 'Hello Redan Mandi!\nI would like to order:\n\n';
-            
-            cart.forEach(item => {
-                message += ${item.name} x ${item.quantity} - ${item.price * item.quantity} AED\n;
-            });
-            
-            message += \nTotal: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0)} AED;
-            message += '\n\nMy delivery address is: [Please provide your address]';
-            
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/971588155123?text=${encodedMessage}`, '_blank');
-        }
-        
-        // Close cart when clicking outside
+        // إغلاق السلة عند النقر خارجها
         document.addEventListener('click', (event) => {
             if (!cartSidebar.contains(event.target) && event.target.className !== 'cart-icon' && 
                 !event.target.closest('.cart-icon')) {
@@ -878,7 +985,7 @@
             }
         });
         
-        // Smooth scrolling for navigation
+        // التمرير السلس للقوائم
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
