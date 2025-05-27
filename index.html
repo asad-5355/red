@@ -1,257 +1,88 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مطعم ريدان للمندي</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f0;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #cfa66a;
+    }
+    header img {
+      height: 60px;
+    }
+    header select {
+      padding: 5px;
+      font-size: 16px;
+    }
+    .content {
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .menu-item {
+      background-color: #fff;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+    .whatsapp-button {
+      display: block;
+      width: fit-content;
+      margin: 30px auto;
+      padding: 10px 20px;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="shaar.png" alt="شعار ريدان للمندي">
+    <select id="langSwitcher">
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+  </header>  <div class="content">
+    <h1 data-ar="قائمة الطعام" data-en="Menu">قائمة الطعام</h1><div class="menu-item">
+  <h2 data-ar="مندي لحم" data-en="Mandi Lamb">مندي لحم</h2>
+  <p data-ar="طبق تقليدي من الأرز واللحم" data-en="Traditional rice and lamb dish">طبق تقليدي من الأرز واللحم</p>
 </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">بيبسي</h3>
-                        <div class="item-price">4 درهم</div>
-                        <p class="item-desc">مشروب غازي كلاسيكي</p>
-                        <button class="add-to-cart" onclick="addToCart('بيبسي', 4)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">ديو</h3>
-                        <div class="item-price">4 درهم</div>
-                        <p class="item-desc">مشروب حمضيات غازي</p>
-                        <button class="add-to-cart" onclick="addToCart('ديو', 4)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">ميرندا</h3>
-                        <div class="item-price">4 درهم</div>
-                        <p class="item-desc">مشروب برتقال غازي</p>
-                        <button class="add-to-cart" onclick="addToCart('ميرندا', 4)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">سفن أب</h3>
-                        <div class="item-price">4 درهم</div>
-                        <p class="item-desc">مشروب ليمون-لايم غازي</p>
-                        <button class="add-to-cart" onclick="addToCart('سفن أب', 4)">أضف إلى السلة</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="desserts" class="menu-category">
-            <h2 class="section-title">الحلويات</h2>
-            <div class="menu-items">
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">كنافه قشطه</h3>
-                        <div class="item-price">15 درهم</div>
-                        <p class="item-desc">كنافه مقرمشة محشوة بالقشطة</p>
-                        <button class="add-to-cart" onclick="addToCart('كنافه قشطه', 15)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">كنافه جبنه</h3>
-                        <div class="item-price">15 درهم</div>
-                        <p class="item-desc">كنافه مقرمشة محشوة بالجبنة</p>
-                        <button class="add-to-cart" onclick="addToCart('كنافه جبنه', 15)">أضف إلى السلة</button>
-                    </div>
-                </div>
-                
-                <div class="menu-item">
-                    <div class="item-image" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="item-details">
-                        <h3 class="item-name">كنافه شوكولاته</h3>
-                        <div class="item-price">16 درهم</div>
-                        <p class="item-desc">كنافه مقرمشة محشوة بالشوكولاته</p>
-                        <button class="add-to-cart" onclick="addToCart('كنافه شوكولاته', 16)">أضف إلى السلة</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <footer>
-        <div class="footer-content">
-            <h3>مطعم ريدان المندي</h3>
-            <div class="contact-info">
-                <p><i class="fas fa-phone"></i> 00971588155123</p>
-                <p><i class="fas fa-map-marker-alt"></i> [عنوان المطعم هنا]</p>
-            </div>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/971588155123"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p class="delivery-hours">أوقات التوصيل: 11 صباحاً - 11 مساءً</p>
-            <p>&copy; 2023 مطعم ريدان المندي. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
-    
-    <script>
-        // متغيرات السلة
-        let cart = [];
-        const cartSidebar = document.getElementById('cartSidebar');
-        const cartItemsContainer = document.getElementById('cartItems');
-        const cartCount = document.getElementById('cartCount');
-        const cartTotal = document.getElementById('cartTotal');
-        
-        // عرض/إخفاء السلة
-        function toggleCart() {
-            cartSidebar.classList.toggle('open');
-        }
-        
-        // إضافة عنصر للسلة
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
-            showNotification(`${name} تمت إضافته للسلة`);
-        }
-        
-        // تحديث عرض السلة
-        function updateCart() {
-            cartItemsContainer.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<div class="empty-cart">السلة فارغة</div>';
-            } else {
-                cart.forEach(item => {
-                    const cartItemElement = document.createElement('div');
-                    cartItemElement.className = 'cart-item';
-                    cartItemElement.innerHTML = `
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">${item.price * item.quantity} درهم</div>
-                        </div>
-                        <div class="cart-item-quantity">
-                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', -1)">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn" onclick="changeQuantity('${item.name}', 1)">+</button>
-                            <span class="remove-item" onclick="removeItem('${item.name}')"><i class="fas fa-times"></i></span>
-                        </div>
-                    `;
-                    cartItemsContainer.appendChild(cartItemElement);
-                });
-            }
-            
-            // تحديث العدد الإجمالي
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            
-            // تحديث المبلغ الإجمالي
-            const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            cartTotal.textContent = totalAmount;
-        }
-        
-        // تغيير الكمية
-        function changeQuantity(name, change) {
-            const item = cart.find(item => item.name === name);
-            
-            if (item) {
-                item.quantity += change;
-                
-                if (item.quantity <= 0) {
-                    cart = cart.filter(item => item.name !== name);
-                    showNotification(`${name} تم إزالته من السلة`);
-                }
-                
-                updateCart();
-            }
-        }
-        
-        // إزالة عنصر من السلة
-        function removeItem(name) {
-            cart = cart.filter(item => item.name !== name);
-            showNotification(`${name} تم إزالته من السلة`);
-            updateCart();
-        }
-        
-        // إرسال الطلب عبر واتساب
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('السلة فارغة! الرجاء إضافة عناصر أولاً');
-                return;
-            }
-            
-            const name = document.getElementById('customer-name').value;
-            const phone = document.getElementById('customer-phone').value;
-            const address = document.getElementById('customer-address').value;
-            const notes = document.getElementById('customer-notes').value;
-            
-            if (!name || !phone || !address) {
-                showNotification('الرجاء إدخال جميع المعلومات المطلوبة');
-                return;
-            }
-            
-            let message = `مرحباً، أريد طلب التالي من مطعم ريدان المندي:\n\n`;
-            message += `الاسم: ${name}\n`;
-            message += `رقم الهاتف: ${phone}\n`;
-            message += `العنوان: ${address}\n`;
-            message += `ملاحظات: ${notes || 'لا يوجد'}\n\n`;
-            message += `تفاصيل الطلب:\n`;
-            
-            cart.forEach(item => {
-                message += `${item.name} × ${item.quantity} - ${item.price * item.quantity} درهم\n`;
-            });
-            
-            message += `\nالمجموع: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0)} درهم`;
-            
-            const whatsappUrl = `https://wa.me/971588155123?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // عرض إشعار
-        function showNotification(text) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = text;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-        
-        // إغلاق السلة عند النقر خارجها
-        document.addEventListener('click', (event) => {
-            if (!cartSidebar.contains(event.target) && event.target.className !== 'cart-icon' && 
-                !event.target.closest('.cart-icon')) {
-                cartSidebar.classList.remove('open');
-            }
-        });
-        
-        // التمرير السلس للقوائم
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
+
+<div class="menu-item">
+  <h2 data-ar="مندي دجاج" data-en="Mandi Chicken">مندي دجاج</h2>
+  <p data-ar="دجاج مشوي مع أرز المندي" data-en="Grilled chicken with mandi rice">دجاج مشوي مع أرز المندي</p>
+</div>
+
+<a href="https://wa.me/971581505066" class="whatsapp-button" target="_blank" data-ar="اطلب عبر واتساب" data-en="Order via WhatsApp">اطلب عبر واتساب</a>
+
+  </div>  <script>
+    const langSwitcher = document.getElementById("langSwitcher");
+    const elements = document.querySelectorAll("[data-ar]");
+
+    langSwitcher.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      elements.forEach(el => {
+        el.innerText = el.getAttribute(`data-${lang}`);
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    });
+  </script></body>
 </html>
